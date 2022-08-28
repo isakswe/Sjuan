@@ -27,23 +27,22 @@ namespace Sjuan
     
     class Table
     {
-        //Current high number, -1 if null
-        public int High(Suit suit) {
-            //TODO
-            return 0;
+        Card[,] cards;
+        bool[] sevenStatuses;
+
+        public Table(Card[,] cards, bool[] sevenStatuses) {
+            this.cards = cards;
+            this.sevenStatuses = sevenStatuses;
         }
+
+        //Current high number, -1 if null
+        public int High(Suit suit) { return cards[(byte)suit, 1].IsNULL ? -1 : cards[(byte)suit, 1].Rank; }
 
         //Current low number, -1 if null
-        public int Low(Suit suit) {
-            //TODO
-            return 0;
-        }
+        public int Low(Suit suit) { return cards[(byte)suit, 0].IsNULL ? -1 : cards[(byte)suit, 0].Rank; }
 
         //Status of 7, true if it has been placed
-        public bool Started(Suit suit) {
-            //TODO
-            return true;
-        }
+        public bool Started(Suit suit) { return sevenStatuses[(byte)suit]; }
     }
 
     enum Suit : byte { Spades, Hearts, Clovers, Diamonds, NULL};
