@@ -49,8 +49,11 @@ namespace Sjuan
     enum Suit : byte { Spades, Hearts, Clovers, Diamonds, NULL};
     struct Card
     {
-        Suit suit;
-        byte rank;
+        readonly Suit suit;
+        readonly byte rank;
+
+        public Suit Suit { get => suit; }
+        public byte Rank { get => rank; }
 
         public static Card NULLCard() {
             return new Card(Suit.NULL, 0);
