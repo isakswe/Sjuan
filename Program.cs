@@ -5,7 +5,16 @@ namespace Sjuan
     class Program
     {
         static void Main(string[] args) {
-            Console.WriteLine("Hello Seven!");
+            
+            Game game = new Game(
+                new List<Player> {
+                    new Player("First best", new FirstBest()), 
+                    new Player("Best first", new FirstBest()) 
+                }
+            );
+
+            Console.WriteLine(game.Play().winner);
+            
         }
     }
 }
